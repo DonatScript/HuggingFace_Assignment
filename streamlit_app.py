@@ -51,6 +51,11 @@ if generate_button:
 
     outputs = model(**inputs)
     probs = outputs.logits_per_image.argmax(dim=1)
+    
+    for i, image in enumerate(images):
+        argmax = probs[i].item()
+        print(captions[argmax])
+        plt.show(plt.imshow(np.asarray(image)))
 else:
     st.write("Goodbye")
 
